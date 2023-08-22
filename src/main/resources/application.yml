@@ -1,0 +1,23 @@
+server:
+  port: 8085
+base-url:
+  context: /com/template/baseapp
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/bassapp?createDatabaseIfNotExist=true
+    username: root
+    maxActive: 20
+    maxIdle: 10
+    maxWait: 5000
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: root
+  jpa:
+    generate-ddl: "true"
+    show-sql: "false"
+    hibernate:
+      ddlH-auto: update
+
+logging:
+  level:
+    com.template.baseapp: DEBUG
