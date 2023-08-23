@@ -2,25 +2,29 @@ package com.template.baseapp.application.aspect;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.plugin.logging.services.LoggingUtils;
 import com.template.baseapp.domain.utils.Constants;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
 
 @Aspect
 @Configuration
-@Slf4j
+@DependsOn({"loggingUtils"})
 public class LoggingAspect {
+
+    private Logger log = LoggingUtils.getLogger(LoggingAspect.class.getName());
 
     @Autowired
     private ObjectMapper mapper;
