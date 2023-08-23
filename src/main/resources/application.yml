@@ -18,6 +18,12 @@ spring:
     hibernate:
       ddlH-auto: update
 
-logging:
-  level:
-    com.template.baseapp: DEBUG
+plugin:
+  log:
+    app:
+      name :  base-app
+      msName : base-app
+    level: DEBUG
+    rolling:
+      policy: size
+      size: 100000kb
